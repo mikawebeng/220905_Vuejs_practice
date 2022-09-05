@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue 練習</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app1">
+        app1: {{ message }}
+    </div>
+    <div id="app2">
+        app2: {{ message }}
+    </div>
+
+    
+    <script>
+        const App1 = {
+            data() {
+                return{
+                    message:"Hello"
+                }
+            }
+        }
+        app1 = Vue.createApp(App1)
+        app1.mount('#app1')
+    </script>
+</body>
+</html>
