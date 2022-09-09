@@ -5,27 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>vue 練習</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 </head>
 <body>
-    <div id="app1">
-        app1: {{ message }}
-    </div>
-    <div id="app2">
-        app2: {{ message }}
+    <div id="app">
+        <h2>Todo List</h2>
+        <form v-on:submit.prevent>
+            <input type="text" v-model="newItem">
+            <button v-on:click="addItem">Add</button>
+        </form>
+        <pre>{{ $data }}</pre>
     </div>
 
-    
+    <script src="https://unpkg.com/vue@next"></script>
     <script>
         const App1 = {
-            data() {
-                return{
-                    message:"Hello"
+            data:() => ({
+                newItem: '',
+                todos:[]
+            }),
+            methods:{
+                addItem: function(event){
+                    console.log('クリック');
+                    let todo = {
+                        item: this.newItem
+                    }
+                    this.todos.push(todo)
+                    this.newItem = ''
                 }
             }
         }
         app1 = Vue.createApp(App1)
-        app1.mount('#app1')
+        app1.mount('#app')
     </script>
 </body>
 </html>
