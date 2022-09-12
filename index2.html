@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>vue 練習</title>
+</head>
+<body>
+    <div id="app">
+        <!--<p v-once>{{ message }}</p>-->
+        <p v-pre>{{ message2 }}</p>
+        <button v-on:click="clickHandler">Click</button>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const App1 = {
+            data:() => ({
+                message: 'Hello Vue.js!',
+                message2: 'Hello Vue.js!'
+
+            }),
+            methods:{
+                clickHandler: function(event){
+                    this.message = this.message.split('').reverse().join('')
+                }
+            }
+        }
+        app1 = Vue.createApp(App1)
+        app1.mount('#app')
+    </script>
+</body>
+</html>
