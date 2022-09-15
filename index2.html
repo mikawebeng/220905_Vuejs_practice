@@ -10,8 +10,18 @@
 <body>
     <div id="app">
         <!--<p v-once>{{ message }}</p>-->
-        <p v-pre>{{ message2 }}</p>
-        <button v-on:click="clickHandler">Click</button>
+        <!--<p v-pre>{{ message2 }}</p>-->
+        <!--<p v-cloak>{{ message }}</p>
+        <h2>mustache</h2>
+        <p>{{ message }}</p>
+        <h2>v-text</h2>
+        <p v-text="message"></p>-->
+        <!--<p v-html="message2"></p>
+        <button v-on:click="clickHandler">Click</button>-->
+            <p>{{ message }}</p>
+            <p>{{ number + 1 }}</p>
+            <p>{{ message.split('').reverse().join('') }}</p>
+            <p>{{ ok ? 'YES' : 'NO' }}</p>
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
@@ -19,7 +29,9 @@
         const App1 = {
             data:() => ({
                 message: 'Hello Vue.js!',
-                message2: 'Hello Vue.js!'
+                number: 100,
+                ok: true,
+                message2: 'Hello <span style="color:red">Vue.js!</span>'
 
             }),
             methods:{
