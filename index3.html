@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>vue 練習</title>
+</head>
+<body>
+    <div id="app">
+        <h2>算出プロパティ</h2>
+        <!--<p>{{ reverseMessage }}</p>
+        <p>{{ reverseMessageMethod() }}</p>-->
+
+        <p>base price:<input type="text" v-model="basePrice"></p>
+        <p>tax included price: <input type="text" v-model="texIncludedPrice"></p>
+        
+//算出プロパティはキャッシュさせるので、同じ値が出力される。
+        <ol>
+            <li>{{ computedNumber }}</li>
+            <li>{{ computedNumber }}</li>
+            <li>{{ computedNumber }}</li>
+        </ol>
+
+        <ol>
+            <li>{{ methodsNumber() }}</li>
+            <li>{{ methodsNumber() }}</li>
+            <li>{{ methodsNumber() }}</li>
+        </ol>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const App1 = {
+            data:() => ({
+                message: 'Hello',
+                basePrice: 100
+            }),
+            computed: {
+                texIncludedPrice:{
+                    get: function(){
+                        return this.basePrice * 1.1
+                    },
+                    set: function(value){
+                        this.basePrice = value / 1.1
+                    }
+                },
+                computedNumber: function(){
+                    console.log('computed')
+                    return Math.random();
+                }
+            },
+            methods:{
+                reverseMessageMethod: function(){
+                    return this.message.split('').reverse().join('')
+                },
+                methodsNumber: function(){
+                    console.log('methods')
+                    return Math.random();
+                }
+            }
+        }
+        app1 = Vue.createApp(App1)
+        app1.mount('#app')
+    </script>
+</body>
+</html>
